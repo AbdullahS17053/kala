@@ -16,7 +16,10 @@ namespace CardHouse
 
         public SeekerScriptable<Vector3> ShuffleStrategy;
 
+        public List<Card> AvailableCards = new List<Card>(); // Predefined list of cards for random selection
         public List<Card> MountedCards = new List<Card>();
+        
+
         CardGroupSettings Strategy;
 
         public UnityEvent OnGroupChanged;
@@ -81,8 +84,30 @@ namespace CardHouse
             Dragging.Instance.OnDrag += HandleDragStart;
             Dragging.Instance.OnDrop += HandleDragDrop;
             Dragging.Instance.PostDrop += HandlePostDrop;
+            // Initialize the group with 4 random cards
+            InitializeGroup();
         }
 
+        private void InitializeGroup()
+        {
+            // Validate the available cards list
+            if (AvailableCards.Count == 0)
+            {
+                Debug.LogWarning("No available cards to initialize the group.");
+                return;
+            }
+
+            // Select 4 random cards without repetition
+            var randomCards = AvailableCards.OrderBy(_ => UnityEngine.Random.value).Take(4).ToList();
+
+            // Mount the selected cards
+            foreach (var card in randomCards)
+            {
+                SafeMount(card);
+            }
+
+            Debug.Log($"{randomCards.Count} cards have been randomly mounted to the group at the start.");
+        }
         void OnDestroy()
         {
             OnNewActiveGroup -= HandleNewActiveGroup;
