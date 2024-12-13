@@ -4023,9 +4023,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8433662383606087800, guid: 4b0b066e6b249b84bacd9e6fb5225679, type: 3}
+      propertyPath: AvailableCards.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8433662383606087800, guid: 4b0b066e6b249b84bacd9e6fb5225679, type: 3}
       propertyPath: DropGates.Gates.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8433662383606087800, guid: 4b0b066e6b249b84bacd9e6fb5225679, type: 3}
+      propertyPath: AvailableCards.Array.data[0]
+      value: 
+      objectReference: {fileID: 477027971768463103, guid: 184b496231d55364b9151ef89250a015, type: 3}
+    - target: {fileID: 8433662383606087800, guid: 4b0b066e6b249b84bacd9e6fb5225679, type: 3}
+      propertyPath: AvailableCards.Array.data[1]
+      value: 
+      objectReference: {fileID: 477027971768463103, guid: d5c2710c91db89449976439fff1f6594, type: 3}
+    - target: {fileID: 8433662383606087800, guid: 4b0b066e6b249b84bacd9e6fb5225679, type: 3}
+      propertyPath: AvailableCards.Array.data[2]
+      value: 
+      objectReference: {fileID: 477027971768463103, guid: 3fc7318a201d14441b9419fa1a217ffb, type: 3}
+    - target: {fileID: 8433662383606087800, guid: 4b0b066e6b249b84bacd9e6fb5225679, type: 3}
+      propertyPath: AvailableCards.Array.data[3]
+      value: 
+      objectReference: {fileID: 477027971768463103, guid: 0f43fc53b367f024d983506274f9ba5d, type: 3}
     - target: {fileID: 8433662383606087800, guid: 4b0b066e6b249b84bacd9e6fb5225679, type: 3}
       propertyPath: DropGates.Gates.Array.data[0]
       value: 
