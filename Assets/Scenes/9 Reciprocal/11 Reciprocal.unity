@@ -1615,7 +1615,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3147709442397729027, guid: 15506913820fd884a8167f791f9d0f65, type: 3}
       propertyPath: m_Name
-      value: Handp4
+      value: Hand
       objectReference: {fileID: 0}
     - target: {fileID: 3147709442397729029, guid: 15506913820fd884a8167f791f9d0f65, type: 3}
       propertyPath: m_Color.a
@@ -3803,7 +3803,7 @@ PrefabInstance:
       objectReference: {fileID: 1035322882}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.size
-      value: 21
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: OnSetupCompleteEventChain.Array.size
@@ -3880,19 +3880,15 @@ PrefabInstance:
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[17].Group
       value: 
-      objectReference: {fileID: 6819727805608071735}
+      objectReference: {fileID: 1035322882}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[18].Group
       value: 
-      objectReference: {fileID: 1281751331}
+      objectReference: {fileID: 1035322882}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[19].Group
       value: 
-      objectReference: {fileID: 1281751331}
-    - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
-      propertyPath: GroupPopulationList.Array.data[20].Group
-      value: 
-      objectReference: {fileID: 1281751331}
+      objectReference: {fileID: 1035322882}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[0].CardCount
       value: 10
@@ -3959,7 +3955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[15].CardCount
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[16].CardCount
@@ -3967,15 +3963,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[17].CardCount
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[18].CardCount
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[19].CardCount
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[1].BlardCount
@@ -3985,10 +3981,6 @@ PrefabInstance:
       propertyPath: GroupPopulationList.Array.data[1].CardPrefab
       value: 
       objectReference: {fileID: 1378863674091576227, guid: 184b496231d55364b9151ef89250a015, type: 3}
-    - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
-      propertyPath: GroupPopulationList.Array.data[20].CardCount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[2].BlardCount
       value: 3
@@ -4076,7 +4068,7 @@ PrefabInstance:
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[15].CardPrefab
       value: 
-      objectReference: {fileID: 1378863674091576227, guid: 2b6a3ff06a7979641b3439194a19df89, type: 3}
+      objectReference: {fileID: 1378863674091576227, guid: a77fe6014653a7948a0865846f80685c, type: 3}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[16].CardPrefab
       value: 
@@ -4088,19 +4080,15 @@ PrefabInstance:
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[18].CardPrefab
       value: 
-      objectReference: {fileID: 1378863674091576227, guid: a7cc149b9c59a154fbc4667eab5ec76f, type: 3}
+      objectReference: {fileID: 1378863674091576227, guid: a77fe6014653a7948a0865846f80685c, type: 3}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[19].CardPrefab
       value: 
-      objectReference: {fileID: 1378863674091576227, guid: 4b4180445496b57449a1182781d22b47, type: 3}
+      objectReference: {fileID: 1378863674091576227, guid: a77fe6014653a7948a0865846f80685c, type: 3}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[1].BlardPrefab
       value: 
       objectReference: {fileID: 159249280873958933, guid: 5127a988d22d8f146b77f33d3e7923a6, type: 3}
-    - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
-      propertyPath: GroupPopulationList.Array.data[20].CardPrefab
-      value: 
-      objectReference: {fileID: 1378863674091576227, guid: a77fe6014653a7948a0865846f80685c, type: 3}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[2].BlardPrefab
       value: 
