@@ -80,6 +80,19 @@ public class CreateRoom : MonoBehaviour
     }
     public void OnCreateRoomButton(int mode)
     {
+        if (mode == 0) {
+            SceneManager.LoadScene("9 Reciprocal");
+
+        }
+        else if (mode == 1) {
+            SceneManager.LoadScene("10 Reciprocal");
+
+        }
+        else if (mode == 2) {
+            SceneManager.LoadScene("11 Reciprocal");
+
+        }
+
         // Generate a 6-digit room code
         roomCode = GenerateRoomCode();
 

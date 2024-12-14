@@ -53,6 +53,10 @@ namespace CardHouse
 
         public void NextPhase()
         {
+            grid.oldGroup = null;
+            grid.tempName = null;
+            grid.capture = false;
+            grid.CaptureCardsText.gameObject.SetActive(false);
             foreach (var button in AllPhaseDependentButtons)
             {
                 button.interactable = false;

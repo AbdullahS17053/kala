@@ -37,6 +37,7 @@ namespace CardHouse
         int CollidersEntered = 0;
         private bool isGrid = false;
         public bool capture = false;
+        public GameObject CaptureCardsText;
 
         public static CardGroup HilightedGroup
         {
@@ -83,6 +84,7 @@ namespace CardHouse
             isGrid = this.gameObject.CompareTag("Grid");
             if (isGrid)
             {
+                CaptureCardsText.gameObject.SetActive(false);
                 abdool = new Dictionary<CardGroup, CardGroup>();
                 for (int i = 0;i < handsAndDecks.Count;i += 2)
                 {
@@ -381,11 +383,16 @@ namespace CardHouse
         {
             return Strategy.CardLimit < 0 || MountedCards.Count < Strategy.CardLimit;
         }
-        string tempName = "";
-        CardGroup oldGroup;
+        public string tempName = "";
+        public CardGroup oldGroup;
 
         public void Mount(Card card, int? index = null, bool instaFlip = false, SeekerSetList seekerSets = null, SeekerSet seekersForUnmounting = null)
         {
+            if (capture) {
+
+                capture = false;
+                CaptureCardsText.gameObject.SetActive(false);
+            }
             oldGroup = card.Group;
 
             card.Group?.UnMount(card, seekersForUnmounting);
@@ -414,6 +421,7 @@ namespace CardHouse
             {
                 CaptureLastTwoCards(abdool[oldGroup],card);
                 capture = true;
+                CaptureCardsText.gameObject.SetActive(true);
             }
             tempName = card.cardName;
         }
@@ -487,8 +495,11 @@ namespace CardHouse
             if (card != null)
             {
                 MountedCards.Remove(card);
-                if(capture)
+                if (capture)
+                {
                     capture = false;
+                    CaptureCardsText.gameObject.SetActive(false);
+                }
                 card.Group = null;
                 Strategy.Apply(MountedCards, seekerSets: new SeekerSetList { seekersForUnmounting });
 
