@@ -46,23 +46,13 @@ namespace CardHouse
                 // Retrieve the struct from the list
                 var groupData = GroupPopulationList[i];
 
-                // Ensure enough cards remain to assign
-                if (shuffledCards.Count == 0)
-                {
-                    Debug.LogWarning("Not enough unique cards left to populate all groups!");
-                    break;
-                }
-
-                // Assign a random card from the shuffled list and remove it
-                int randomIndex = UnityEngine.Random.Range(0, shuffledCards.Count);
-                groupData.CardPrefab = shuffledCards[randomIndex];
-                shuffledCards.RemoveAt(randomIndex); // Remove assigned card from the pool
+                // Modify the struct's field
+                groupData.CardPrefab = shuffledCards[UnityEngine.Random.Range(0,shuffledCards.Count)];
 
                 // Assign the modified struct back to the list
                 GroupPopulationList[i] = groupData;
             }
         }
-
 
 
         public void DoSetup()
