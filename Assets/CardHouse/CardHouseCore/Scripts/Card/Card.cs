@@ -18,6 +18,8 @@ namespace CardHouse
 
         [HideInInspector]
         public CardGroup Group;
+
+        public string cardName;
         public Homing Homing { get; private set; }
         public Turning Turning { get; private set; }
         public Scaling Scaling { get; private set; }
@@ -49,6 +51,7 @@ namespace CardHouse
 
         void Awake()
         {
+            cardName = gameObject.name;
             Homing = GetComponent<Homing>();
             Turning = GetComponent<Turning>();
             Scaling = GetComponent<Scaling>();

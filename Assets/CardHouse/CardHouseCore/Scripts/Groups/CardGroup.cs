@@ -364,10 +364,12 @@ namespace CardHouse
         {
             return Strategy.CardLimit < 0 || MountedCards.Count < Strategy.CardLimit;
         }
-
+        string tempName = "";
         public void Mount(Card card, int? index = null, bool instaFlip = false, SeekerSetList seekerSets = null, SeekerSet seekersForUnmounting = null)
         {
+             
             card.Group?.UnMount(card, seekersForUnmounting);
+            
 
             if (index == null || index >= MountedCards.Count)
             {
@@ -388,6 +390,16 @@ namespace CardHouse
             OnGroupChanged?.Invoke();
 
             Strategy.Apply(MountedCards, instaFlip, seekerSets);
+            if (card.cardName == tempName)
+            {
+                captureCard();
+            }
+            tempName = card.cardName;
+        }
+
+        public void captureCard()
+        {
+            Debug.Log("aaaaaaaaaaaaaaaaaaah");
         }
 
         public bool SafeMount(Card card, int? index = null)
