@@ -42,7 +42,24 @@ namespace CardHouse
 
         public bool IsValidDrag(CardGroup source, CardGroup destination, DragAction dragAction)
         {
+            // Find the matching valid drag
+            var validDrag = ValidDrags.LastOrDefault(x => x.Source == source && x.Destination == destination && x.DragAction == dragAction);
+
+            // Check if the valid drag is the last in the list
+            if (validDrag != null && ValidDrags.IndexOf(validDrag) == ValidDrags.Count - 1)
+            {
+                // Special case: Check if grid.capture is true
+                if (PhaseManager.Instance.grid != null && PhaseManager.Instance.grid.capture)
+                {
+                   
+                    return true;
+                }
+                return false;
+            }
+
+            // Default behavior for other valid drags
             return ValidDrags.Any(x => x.Source == source && x.Destination == destination && x.DragAction == dragAction);
         }
+
     }
 }

@@ -1,8 +1,11 @@
+using PokerGameClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
+using static CardHouse.GroupSetup;
 
 namespace CardHouse
 {
@@ -11,6 +14,8 @@ namespace CardHouse
     {
         public bool HilightOnCardEntry = true;
         public GameObject Hilight;
+        public Dictionary<CardGroup,CardGroup> abdool;
+        public List<CardGroup> handsAndDecks;
 
         public GateCollection<DropParams> DropGates;
 
@@ -30,6 +35,8 @@ namespace CardHouse
         static List<CardGroup> GroupsHoveredWithObjects = new List<CardGroup>();
 
         int CollidersEntered = 0;
+        private bool isGrid = false;
+        public bool capture = false;
 
         public static CardGroup HilightedGroup
         {
@@ -73,6 +80,16 @@ namespace CardHouse
 
         void Start()
         {
+            isGrid = this.gameObject.CompareTag("Grid");
+            if (isGrid)
+            {
+                abdool = new Dictionary<CardGroup, CardGroup>();
+                for (int i = 0;i < handsAndDecks.Count;i += 2)
+                {
+                    abdool[handsAndDecks[i]] = handsAndDecks[i + 1];
+                }
+            }
+             
             OnNewActiveGroup += HandleNewActiveGroup;
 
             if (Dragging.Instance == null)
@@ -365,9 +382,12 @@ namespace CardHouse
             return Strategy.CardLimit < 0 || MountedCards.Count < Strategy.CardLimit;
         }
         string tempName = "";
+        CardGroup oldGroup;
+
         public void Mount(Card card, int? index = null, bool instaFlip = false, SeekerSetList seekerSets = null, SeekerSet seekersForUnmounting = null)
         {
-             
+            oldGroup = card.Group;
+
             card.Group?.UnMount(card, seekersForUnmounting);
             
 
@@ -390,17 +410,54 @@ namespace CardHouse
             OnGroupChanged?.Invoke();
 
             Strategy.Apply(MountedCards, instaFlip, seekerSets);
-            if (card.cardName == tempName)
+            if (card.cardName == tempName && isGrid && oldGroup != this && oldGroup != null)
             {
-                captureCard();
+                CaptureLastTwoCards(abdool[oldGroup],card);
+                capture = true;
             }
             tempName = card.cardName;
         }
 
-        public void captureCard()
+        public void CaptureLastTwoCards(CardGroup targetGroup, Card card)
         {
-            Debug.Log("aaaaaaaaaaaaaaaaaaah");
+            // Ensure we have enough cards to capture
+            if (MountedCards.Count < 2)
+            {
+                Debug.LogWarning("CaptureLastTwoCards failed: Not enough cards in MountedCards.");
+                return;
+            }
+
+            // Ensure the target group is valid
+            if (targetGroup == null)
+            {
+                Debug.LogWarning("CaptureLastTwoCards failed: Target group is null.");
+                return;
+            }
+
+            // Find two instances of the specified card in MountedCards
+            var matchingCards = MountedCards.Where(c => c.cardName == card.cardName).Take(2).ToList();
+
+
+            // Ensure there are at least two matching cards
+            if (matchingCards.Count < 2)
+            {
+                Debug.LogWarning($"CaptureLastTwoCards failed: Less than two instances of {card.name} found in MountedCards.");
+                return;
+            }
+
+            // Remove the matching cards from this group and add them to the target group
+            foreach (var matchingCard in matchingCards)
+            {
+                UnMount(matchingCard); // Unmount from the current group
+                targetGroup.Mount(matchingCard); // Mount to the target group
+                Debug.Log($"Card {matchingCard.name} captured and moved to {targetGroup.name}");
+            }
+
+            // Optional: Trigger any relevant events
+            OnGroupChanged?.Invoke();
         }
+
+
 
         public bool SafeMount(Card card, int? index = null)
         {
@@ -430,6 +487,8 @@ namespace CardHouse
             if (card != null)
             {
                 MountedCards.Remove(card);
+                if(capture)
+                    capture = false;
                 card.Group = null;
                 Strategy.Apply(MountedCards, seekerSets: new SeekerSetList { seekersForUnmounting });
 

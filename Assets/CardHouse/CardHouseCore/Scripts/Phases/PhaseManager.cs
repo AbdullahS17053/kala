@@ -8,6 +8,7 @@ namespace CardHouse
 {
     public class PhaseManager : MonoBehaviour
     {
+        public CardGroup grid;
         public List<Button> AllPhaseDependentButtons;
         public List<Phase> Phases;
         public Phase CurrentPhase => (CurrentPhaseIndex >= 0 && CurrentPhaseIndex < Phases.Count) ? Phases[CurrentPhaseIndex] : null;

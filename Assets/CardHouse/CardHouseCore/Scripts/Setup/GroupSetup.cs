@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,7 +29,7 @@ namespace CardHouse
 
         void Start()
         {
-            InitializeGroupPopulationData();
+            
             if (RunOnStart)
             {
                 DoSetup();
@@ -36,22 +37,11 @@ namespace CardHouse
         }
 
 
-        public void InitializeGroupPopulationData()
+        public GameObject getRandomCard()
         {
             // Shuffle the card prefabs to ensure randomness
             var shuffledCards = CardPrefabs.OrderBy(_ => UnityEngine.Random.value).ToList();
-
-            for (int i = 0; i < GroupPopulationList.Count; i++)
-            {
-                // Retrieve the struct from the list
-                var groupData = GroupPopulationList[i];
-
-                // Modify the struct's field
-                groupData.CardPrefab = shuffledCards[UnityEngine.Random.Range(0,shuffledCards.Count)];
-
-                // Assign the modified struct back to the list
-                GroupPopulationList[i] = groupData;
-            }
+            return shuffledCards[UnityEngine.Random.Range(0, shuffledCards.Count)];
         }
 
 
@@ -65,12 +55,13 @@ namespace CardHouse
             var homing = new InstantVector3Seeker();
             var turning = new InstantFloatSeeker();
             var newThingDict = new Dictionary<GroupPopulationData, List<GameObject>>();
+          
             foreach (var group in GroupPopulationList)
             {
                 newThingDict[group] = new List<GameObject>();
                 for (var i = 0; i < group.CardCount; i++)
                 {
-                    var newThing = Instantiate(group.CardPrefab, Vector3.down * 10, Quaternion.identity);
+                    var newThing = Instantiate(getRandomCard(), Vector3.down * 10, Quaternion.identity);
                     newThingDict[group].Add(newThing);
                 }
             }

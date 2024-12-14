@@ -9,6 +9,7 @@ TagManager:
   - Chips
   - Pointer
   - TablesList
+  - Grid
   layers:
   - Default
   - TransparentFX
