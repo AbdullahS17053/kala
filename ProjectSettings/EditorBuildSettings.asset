@@ -51,7 +51,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu/GetTokensMenu.unity
     guid: 129f675d92203a04984925ab38417367
   - enabled: 1
-    path: Assets/Scenes/9 Reciprocal/9 Reciprocal.unity
+    path: Assets/Scenes/9 Reciprocal/10 reciprocal new.unity
     guid: 025d3709984102e4c81bbfbd4dfc01b4
   - enabled: 1
     path: Assets/Scenes/Menu/SettingsMenu.unity

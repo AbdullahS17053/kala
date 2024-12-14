@@ -794,17 +794,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7272184987812359531, guid: 0ba2a742026126f498ca76981686a7ad, type: 3}
   m_PrefabInstance: {fileID: 1899305167}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &692770209 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7272184987812359525, guid: 0ba2a742026126f498ca76981686a7ad, type: 3}
-  m_PrefabInstance: {fileID: 1899305167}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692770207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318865ee4312095429feca847343d7fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &692770211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,15 +2874,15 @@ PrefabInstance:
     - target: {fileID: 3090792073704058525, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: Groups.Array.data[8].Group
       value: 
-      objectReference: {fileID: 692770209}
+      objectReference: {fileID: 2073075980}
     - target: {fileID: 3090792073704058525, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: Groups.Array.data[9].Group
       value: 
-      objectReference: {fileID: 1944864072}
+      objectReference: {fileID: 2073075980}
     - target: {fileID: 3090792073704058525, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: Groups.Array.data[10].Group
       value: 
-      objectReference: {fileID: 432890878}
+      objectReference: {fileID: 2073075980}
     - target: {fileID: 3090792073704058525, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: Groups.Array.data[11].Group
       value: 
@@ -3025,7 +3014,7 @@ PrefabInstance:
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[15].Group
       value: 
-      objectReference: {fileID: 1944864072}
+      objectReference: {fileID: 0}
     - target: {fileID: 6155219491839174572, guid: 9aa470ac017dc5c4a841406dde1da1be, type: 3}
       propertyPath: GroupPopulationList.Array.data[0].CardCount
       value: 10

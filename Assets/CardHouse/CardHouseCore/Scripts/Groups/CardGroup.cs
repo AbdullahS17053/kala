@@ -18,7 +18,7 @@ namespace CardHouse
 
         public List<Card> AvailableCards = new List<Card>(); // Predefined list of cards for random selection
         public List<Card> MountedCards = new List<Card>();
-        
+
 
         CardGroupSettings Strategy;
 
@@ -383,6 +383,8 @@ namespace CardHouse
             }
 
             card.Group = this;
+            Debug.Log($"Mounted card {card.name} at position {card.transform.position} in group {name}");
+
             card.TriggerMountEvents(this);
             OnGroupChanged?.Invoke();
 
@@ -402,7 +404,7 @@ namespace CardHouse
         public int? UnMount(Card card, SeekerSet seekersForUnmounting = null)
         { // returns index of card if found, -1 if not found
             int? index = null;
-            if ( MountedCards!=null && MountedCards.Contains(card))
+            if (MountedCards != null && MountedCards.Contains(card))
             {
                 index = MountedCards.IndexOf(card);
                 UnMount(index, seekersForUnmounting);
@@ -537,6 +539,34 @@ namespace CardHouse
             }
             Shuffle(isInstant);
         }
+
+
+        //    public void CaptureMatchingCards(CardGroup boardGroup, CardGroup playerCaptureGroup)
+        //    {
+        //        var groupedCards = boardGroup.MountedCards
+        //            .GroupBy(card => card.Value) // Use card.Suit if matching by suit
+        //            .Where(group => group.Count() > 1) // Only consider groups with duplicates
+        //            .ToList();
+
+        //        foreach (var group in groupedCards)
+        //        {
+        //            Debug.Log($"Capturing {group.Count()} cards with value {group.Key}");
+
+        //            foreach (var card in group)
+        //            {
+        //                boardGroup.UnMount(card);
+        //                playerCaptureGroup.Mount(card);
+
+        //                Debug.Log($"Card {card.name} captured and moved to {playerCaptureGroup.name}");
+        //            }
+        //        }
+
+        //        boardGroup.OnGroupChanged?.Invoke();
+        //        playerCaptureGroup.OnGroupChanged?.Invoke();
+        //    }
+
+        //}
+
     }
 
     public enum GroupTargetType
