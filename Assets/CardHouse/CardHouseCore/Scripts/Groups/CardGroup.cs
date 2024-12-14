@@ -383,7 +383,6 @@ namespace CardHouse
             }
 
             card.Group = this;
-            Debug.Log($"Mounted card {card.name} at position {card.transform.position} in group {name}");
 
             card.TriggerMountEvents(this);
             OnGroupChanged?.Invoke();
