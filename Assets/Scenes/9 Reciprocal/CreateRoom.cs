@@ -26,6 +26,7 @@ public class CreateRoom : MonoBehaviour
     private string roomCode;
     private string hostIP;
 
+    [SerializeField] private GameObject ModeSelectionScreen;
     void Start()
     {
         // Initialize Firebase Realtime Database
@@ -40,14 +41,7 @@ public class CreateRoom : MonoBehaviour
         }
     }
 
-    public void OnCreateRoomButton()
-    {
-        // Generate a 6-digit room code
-        roomCode = GenerateRoomCode();
 
-        // Store room data in Firebase
-        CreateRoomInFirebase(roomCode, hostIP);
-    }
 
     private string GenerateRoomCode()
     {
@@ -75,7 +69,24 @@ public class CreateRoom : MonoBehaviour
         return null;
     }
 
-    private void CreateRoomInFirebase(string roomCode, string hostIP)
+
+    public void OnShowModeScelectionScreen() { 
+    
+        ModeSelectionScreen.gameObject.SetActive(true);
+    }
+    public void OnHideModeSelectionScreen() {
+
+        ModeSelectionScreen.gameObject.SetActive(false);
+    }
+    public void OnCreateRoomButton(int mode)
+    {
+        // Generate a 6-digit room code
+        roomCode = GenerateRoomCode();
+
+        // Store room data in Firebase
+        CreateRoomInFirebase(roomCode, hostIP , mode);
+    }
+    private void CreateRoomInFirebase(string roomCode, string hostIP , int mode)
     {
         // Define room data
         var roomData = new
@@ -92,7 +103,7 @@ public class CreateRoom : MonoBehaviour
                 if (task.IsCompleted)
                 {
                     Debug.Log($"Room created successfully! Room Code: {roomCode}");
-                    TransitionToGameScene();
+                    TransitionToGameScene(mode);
                 }
                 else
                 {
@@ -101,9 +112,19 @@ public class CreateRoom : MonoBehaviour
             });
     }
 
-    private void TransitionToGameScene()
+    private void TransitionToGameScene(int mode)
     {
-        // Load the "9 Reciprocal" scene
-        SceneManager.LoadScene("9 Reciprocal");
+        if (mode == 0)
+        {
+            SceneManager.LoadScene("9 Reciprocal");
+        }
+        else if (mode == 1)
+        {
+            SceneManager.LoadScene("10 Reciprocal");
+        }
+        else if (mode == 2)
+        {
+            SceneManager.LoadScene("11 Reciprocal");
+        }
     }
 }
