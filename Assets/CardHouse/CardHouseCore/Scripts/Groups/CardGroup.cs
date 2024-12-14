@@ -85,7 +85,7 @@ namespace CardHouse
             Dragging.Instance.OnDrop += HandleDragDrop;
             Dragging.Instance.PostDrop += HandlePostDrop;
             // Initialize the group with 4 random cards
-            InitializeGroup();
+            //InitializeGroup();
         }
 
         private void InitializeGroup()
@@ -402,7 +402,7 @@ namespace CardHouse
         public int? UnMount(Card card, SeekerSet seekersForUnmounting = null)
         { // returns index of card if found, -1 if not found
             int? index = null;
-            if (MountedCards.Contains(card))
+            if ( MountedCards!=null && MountedCards.Contains(card))
             {
                 index = MountedCards.IndexOf(card);
                 UnMount(index, seekersForUnmounting);
